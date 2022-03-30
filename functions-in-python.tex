@@ -65,4 +65,97 @@ f.close()
 \end{lstlisting}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{}
+\begin{lstlisting}[language=python]
+f = open('123790.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+lines[2] = 'Katowice, Polarna'
+
+f = open('123313.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{}
+\begin{lstlisting}[basicstyle=\tiny,language=python]
+f = open('123313.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+old_salary = int(lines[3])
+new_salary = int(1.11 * lines[3])
+lines[3] = str(new_salary)
+
+f = open('123313.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+
+f = open('123790.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+lines[2] = 'Katowice, Polarna'
+
+f = open('123790.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+
+f = open('123856.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+old_salary = int(lines[3])
+new_salary = int(1.10 * lines[3])
+lines[3] = str(new_salary)
+
+f = open('123856.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{}
+\begin{lstlisting}[basicstyle=\tiny,language=python]
+f = open('123313.txt', 'r') # INPUT
+lines = f.read().splitlines()
+f.close()
+
+old_salary = int(lines[3])
+new_salary = int(1.11 * lines[3])
+lines[3] = str(new_salary)
+
+f = open('123313.txt', 'w') # OUTPUT
+f.write('\n'.join(lines))
+f.close()
+
+f = open('123790.txt', 'r') # INPUT
+lines = f.read().splitlines()
+f.close()
+
+lines[2] = 'Katowice, Polarna'
+
+f = open('123790.txt', 'w') # OUTPUT
+f.write('\n'.join(lines))
+f.close()
+
+f = open('123856.txt', 'r') # INPUT
+lines = f.read().splitlines()
+f.close()
+
+old_salary = int(lines[3])
+new_salary = int(1.10 * lines[3])
+lines[3] = str(new_salary)
+
+f = open('123856.txt', 'w') # OUTPUT
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{frame}
+
 \end{document}
