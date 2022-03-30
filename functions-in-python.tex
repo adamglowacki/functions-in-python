@@ -1,0 +1,68 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Singapore}
+\usepackage{polski}
+\usepackage{xltxtra}
+\usepackage{listings}
+
+\title{TITLE}
+\author{Adam Głowacki}
+\date{April 8th, 2022}
+\beamertemplatenavigationsymbolsempty
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{123456.txt}
+\begin{verbatim}
+Alice Green
+Principal Office Assistant
+Warsaw, Aleje Jerozolimskie
+8900
+...
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+\frametitle{Update the files}
+\begin{enumerate}
+  \item 123313.txt: 11\% salary raise
+  \item 123790.txt: moved to Polarna street in Katowice
+  \item 123856.txt: 10\% salary raise
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{}
+\begin{lstlisting}[language=python]
+f = open('123313.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+f = open('123313.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{}
+\begin{lstlisting}[language=python]
+f = open('123313.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+old_salary = int(lines[3])
+new_salary = int(1.11 * lines[3])
+lines[3] = str(new_salary)
+
+f = open('123313.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{frame}
+
+\end{document}
