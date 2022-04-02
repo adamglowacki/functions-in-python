@@ -9,6 +9,8 @@
 \date{April 8th, 2022}
 \beamertemplatenavigationsymbolsempty
 
+\lstset{showstringspaces=false}
+
 \begin{document}
 
 \begin{frame}
@@ -29,14 +31,24 @@ Warsaw, Aleje Jerozolimskie
 \begin{frame}
 \frametitle{Update the files}
 \begin{enumerate}
-  \item 123313.txt: 11\% salary raise
-  \item 123790.txt: moved to Polarna street in Katowice
-  \item 123856.txt: 10\% salary raise
+  \item 123313: 11\% salary raise
+  \item 123790: moved to Polarna street in Katowice
+  \item 123856: 10\% salary raise
 \end{enumerate}
 \end{frame}
 
+\begin{frame}
+\frametitle{What to do}
+For each person/file:
+\begin{itemize}
+  \item read the file contents
+  \item find the right line
+  \item replace the piece of information
+  \item update the file contents
+\end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]
-\frametitle{}
 \begin{lstlisting}[language=python]
 f = open('123313.txt', 'r')
 lines = f.read().splitlines()
@@ -49,14 +61,13 @@ f.close()
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{}
 \begin{lstlisting}[language=python]
 f = open('123313.txt', 'r')
 lines = f.read().splitlines()
 f.close()
 
 old_salary = int(lines[3])
-new_salary = int(1.11 * lines[3])
+new_salary = 1.11 * old_salary
 lines[3] = str(new_salary)
 
 f = open('123313.txt', 'w')
@@ -66,7 +77,6 @@ f.close()
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{}
 \begin{lstlisting}[language=python]
 f = open('123790.txt', 'r')
 lines = f.read().splitlines()
@@ -81,14 +91,15 @@ f.close()
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{}
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \begin{lstlisting}[basicstyle=\tiny,language=python]
 f = open('123313.txt', 'r')
 lines = f.read().splitlines()
 f.close()
 
 old_salary = int(lines[3])
-new_salary = int(1.11 * lines[3])
+new_salary = 1.11 * old_salary
 lines[3] = str(new_salary)
 
 f = open('123313.txt', 'w')
@@ -110,51 +121,346 @@ lines = f.read().splitlines()
 f.close()
 
 old_salary = int(lines[3])
-new_salary = int(1.10 * lines[3])
+new_salary = 1.10 * old_salary
 lines[3] = str(new_salary)
 
 f = open('123856.txt', 'w')
 f.write('\n'.join(lines))
 f.close()
 \end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{}
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \begin{lstlisting}[basicstyle=\tiny,language=python]
-f = open('123313.txt', 'r') # INPUT
+f = open('123313.txt', 'r')
 lines = f.read().splitlines()
 f.close()
 
 old_salary = int(lines[3])
-new_salary = int(1.11 * lines[3])
+new_salary = 1.11 * old_salary
 lines[3] = str(new_salary)
 
-f = open('123313.txt', 'w') # OUTPUT
+f = open('123313.txt', 'w')
 f.write('\n'.join(lines))
 f.close()
 
-f = open('123790.txt', 'r') # INPUT
+f = open('123790.txt', 'r')
 lines = f.read().splitlines()
 f.close()
 
 lines[2] = 'Katowice, Polarna'
 
-f = open('123790.txt', 'w') # OUTPUT
+f = open('123790.txt', 'w')
 f.write('\n'.join(lines))
 f.close()
 
-f = open('123856.txt', 'r') # INPUT
+f = open('123856.txt', 'r')
 lines = f.read().splitlines()
 f.close()
 
 old_salary = int(lines[3])
-new_salary = int(1.10 * lines[3])
+new_salary = 1.10 * old_salary
 lines[3] = str(new_salary)
 
-f = open('123856.txt', 'w') # OUTPUT
+f = open('123856.txt', 'w')
 f.write('\n'.join(lines))
 f.close()
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+Similar task
+\begin{itemize}
+  \item 697123: 12\% salary raise
+  \item 112001: 33\% salary raise
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile,label=longcode]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\tiny,language=python]
+# READ FILE
+f = open('123313.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+# CHANGE SALARY
+old_salary = int(lines[3])
+new_salary = 1.11 * old_salary
+lines[3] = str(new_salary)
+
+# WRITE FILE
+f = open('123313.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+
+# ---
+
+# READ FILE
+f = open('123790.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+# CHANGE ADDRESS
+lines[2] = 'Katowice, Polarna'
+
+# WRITE FILE
+f = open('123790.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\tiny,language=python]
+# ---
+
+# READ FILE
+f = open('123856.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+# CHANGE SALARY
+old_salary = int(lines[3])
+new_salary = 1.10 * old_salary
+lines[3] = str(new_salary)
+
+# WRITE FILE
+f = open('123856.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\centering
+\Huge
+Function
+\end{frame}
+
+\begin{frame}
+\centering
+\Huge
+$f(x) = x + 1$
+\end{frame}
+
+\begin{frame}
+\centering
+\Huge
+$f(x) = x + 1$
+
+$g(x) = 2x - x + 1$
+
+$h(x) = \frac{42 + x^2\cdot{}x}{x^3+42} - x + 1$
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\LARGE
+$f(x) = x + 1$
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\LARGE,language=python]
+def f(x):
+  return x + 1
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[basicstyle=\large,language=python]
+def f(x):
+  print("Hi, how are you?")
+  return x + 1
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[basicstyle=\large,language=python]
+def f(x, y):
+  print("Hi, how are you?")
+  return x - y + 1
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[basicstyle=\large,language=python]
+def f():
+  print("Hi, how are you?")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+# READ FILE
+f = open('123856.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+def read_file(person):
+  f = open(person + '.txt', 'r')
+  lines = f.read().splitlines()
+  f.close()
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+# READ FILE
+f = open('123856.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+def read_file(person):
+  f = open(person + '.txt', 'r')
+  lines = f.read().splitlines()
+  f.close()
+  return lines
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+# CHANGE SALARY
+old_salary = int(lines[3])
+new_salary = 1.10 * old_salary
+lines[3] = str(new_salary)
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+def change_salary(lines, x):
+  old_salary = int(lines[3])
+  new_salary = x * old_salary
+  lines[3] = str(new_salary)
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+# CHANGE ADDRESS
+lines[2] = 'Katowice, Polarna'
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+def change_address(lines, new_address):
+  lines[2] = new_address
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+# WRITE FILE
+f = open('123313.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\small,language=python]
+def write_file(person, lines):
+  f = open(person + '.txt', 'w')
+  f.write('\n'.join(lines))
+  f.close()
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+\againframe{longcode}
+
+\begin{frame}[fragile]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\tiny,language=python]
+# READ FILE
+lines = read_file('123313')
+
+# CHANGE SALARY
+change_salary(lines, 1.11)
+
+# WRITE FILE
+write_file('123313', lines)
+
+# ---
+
+# READ FILE
+lines = read_file('123790')
+
+# CHANGE ADDRESS
+change_address(lines, 'Katowice, Polarna')
+
+# WRITE FILE
+write_file('123790', lines)
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\tiny,language=python]
+
+# ---
+
+# READ FILE
+lines = read_file('123856')
+
+# CHANGE SALARY
+change_salary(lines, 1.10)
+
+# WRITE FILE
+write_file('123856', lines)
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[language=python]
+lines = read_file('123313')
+change_salary(lines, 1.11)
+write_file('123313', lines)
+
+lines = read_file('123790')
+change_address(lines, 'Katowice, Polarna')
+write_file('123790', lines)
+
+lines = read_file('123856')
+change_salary(lines, 1.10)
+write_file('123856', lines)
 \end{lstlisting}
 \end{frame}
 
