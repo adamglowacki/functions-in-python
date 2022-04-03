@@ -1,0 +1,32 @@
+* everybody understands
+* we are given a task
+* let's google the question
+* voila!
+* what if somebody gave us a similar task?
+* perfect!
+
+* somebody told us about functions in Python
+* function in maths: input -> output, nothing else matters
+* Python: similar, implementation matters
+* let's code! does anybody see a problem here?
+* no return - changing the argument; it's a bit tricky - what is passed by ref,
+  what is passed by value
+* somebody warns about the overhead
+* let's check
+* wow, twice as long!
+* let's compare Python with C
+* why do you use Python?
+* because CPU is cheaper than you!
+
+* pure: input is in arguments, output is in result
+* dirty: everything else
+* let's recall the meeting with Hubert
+* what was the problem? why didn't we catch it?
+* change the system date; or test internal functions; or turn the date into an
+  argument
+* we can test on any day of the week
+
+* scripts as POOR functions
+* don't return the result this way
+
+* easy homework for practice
