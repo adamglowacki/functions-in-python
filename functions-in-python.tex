@@ -1,21 +1,37 @@
 \documentclass[aspectratio=169]{beamer}
-\usetheme{Singapore}
 \usepackage{polski}
 \usepackage{xltxtra}
 \usepackage{listings}
+\usepackage{xcolor}
+\usepackage{siunitx}
+
+\usetheme{Singapore}
 
 \title{TITLE}
 \author{Adam Głowacki}
 \date{April 8th, 2022}
 \beamertemplatenavigationsymbolsempty
 
-\lstset{showstringspaces=false}
+\definecolor{keywordColor}{HTML}{AF5F00}
+\definecolor{commentColor}{HTML}{12488B}
+\definecolor{stringColor}{HTML}{C01C28}
+\newcommand{\style}[1]{\ttfamily#1}
+\lstset{
+  showstringspaces=false,
+  basicstyle=\style{\normalsize},
+  commentstyle=\color{commentColor}\textit,
+  keywordstyle=\color{keywordColor}\bfseries,
+  stringstyle=\color{stringColor},
+  language=python
+}
 
 \begin{document}
 
 \begin{frame}
 \titlepage
 \end{frame}
+
+\section{Staff database}
 
 \begin{frame}[fragile]
 \frametitle{123456.txt}
@@ -49,7 +65,7 @@ For each person/file:
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{lstlisting}[language=python]
+\begin{lstlisting}
 f = open('123313.txt', 'r')
 lines = f.read().splitlines()
 f.close()
@@ -61,7 +77,18 @@ f.close()
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{lstlisting}[language=python]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{verbatim}
+Alice Green
+Principal Office Assistant
+Warsaw, Aleje Jerozolimskie
+8900
+...
+\end{verbatim}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}
 f = open('123313.txt', 'r')
 lines = f.read().splitlines()
 f.close()
@@ -74,10 +101,12 @@ f = open('123313.txt', 'w')
 f.write('\n'.join(lines))
 f.close()
 \end{lstlisting}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{lstlisting}[language=python]
+\begin{lstlisting}
 f = open('123790.txt', 'r')
 lines = f.read().splitlines()
 f.close()
@@ -93,7 +122,7 @@ f.close()
 \begin{frame}[fragile]
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\tiny,language=python]
+\begin{lstlisting}[basicstyle=\style{\tiny}]
 f = open('123313.txt', 'r')
 lines = f.read().splitlines()
 f.close()
@@ -137,7 +166,7 @@ f.close()
 \begin{frame}[fragile]
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\tiny,language=python]
+\begin{lstlisting}[basicstyle=\style{\tiny}]
 f = open('123313.txt', 'r')
 lines = f.read().splitlines()
 f.close()
@@ -183,10 +212,59 @@ Similar task
 \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\style{\tiny}]
+f = open('123313.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+old_salary = int(lines[3])
+new_salary = 1.11 * old_salary
+lines[3] = str(new_salary)
+
+f = open('123313.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+
+# ---
+
+f = open('123790.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+lines[2] = 'Katowice, Polarna'
+
+f = open('123790.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\style{\tiny}]
+# ---
+
+f = open('123856.txt', 'r')
+lines = f.read().splitlines()
+f.close()
+
+old_salary = int(lines[3])
+new_salary = 1.10 * old_salary
+lines[3] = str(new_salary)
+
+f = open('123856.txt', 'w')
+f.write('\n'.join(lines))
+f.close()
+\end{lstlisting}
+\end{column}
+\end{columns}
+\end{frame}
+
 \begin{frame}[fragile,label=longcode]
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\tiny,language=python]
+\begin{lstlisting}[basicstyle=\style{\tiny}]
 # READ FILE
 f = open('123313.txt', 'r')
 lines = f.read().splitlines()
@@ -219,7 +297,7 @@ f.close()
 \end{lstlisting}
 \end{column}
 \begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\tiny,language=python]
+\begin{lstlisting}[basicstyle=\style{\tiny}]
 # ---
 
 # READ FILE
@@ -240,6 +318,8 @@ f.close()
 \end{column}
 \end{columns}
 \end{frame}
+
+\section{Functions}
 
 \begin{frame}
 \centering
@@ -270,7 +350,7 @@ $h(x) = \frac{42 + x^2\cdot{}x}{x^3+42} - x + 1$
 $f(x) = x + 1$
 \end{column}
 \begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\LARGE,language=python]
+\begin{lstlisting}[basicstyle=\style{\LARGE}]
 def f(x):
   return x + 1
 \end{lstlisting}
@@ -279,7 +359,7 @@ def f(x):
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{lstlisting}[basicstyle=\large,language=python]
+\begin{lstlisting}[basicstyle=\style{\large}]
 def f(x):
   print("Hi, how are you?")
   return x + 1
@@ -287,7 +367,7 @@ def f(x):
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{lstlisting}[basicstyle=\large,language=python]
+\begin{lstlisting}[basicstyle=\style{\large}]
 def f(x, y):
   print("Hi, how are you?")
   return x - y + 1
@@ -295,112 +375,89 @@ def f(x, y):
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{lstlisting}[basicstyle=\large,language=python]
+\begin{lstlisting}[basicstyle=\style{\large}]
 def f():
   print("Hi, how are you?")
 \end{lstlisting}
 \end{frame}
 
+\section{Use functions}
+
 \begin{frame}[fragile]
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\begin{lstlisting}[basicstyle=\style{\small}]
 # READ FILE
 f = open('123856.txt', 'r')
 lines = f.read().splitlines()
 f.close()
 \end{lstlisting}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\vspace{1.5cm}
+\begin{lstlisting}[basicstyle=\style{\small}]
 def read_file(person):
   f = open(person + '.txt', 'r')
   lines = f.read().splitlines()
   f.close()
 \end{lstlisting}
-\end{column}
-\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\begin{lstlisting}[basicstyle=\style{\small}]
 # READ FILE
 f = open('123856.txt', 'r')
 lines = f.read().splitlines()
 f.close()
 \end{lstlisting}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\vspace{1.5cm}
+\begin{lstlisting}[basicstyle=\style{\small}]
 def read_file(person):
   f = open(person + '.txt', 'r')
   lines = f.read().splitlines()
   f.close()
   return lines
 \end{lstlisting}
-\end{column}
-\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\begin{lstlisting}[basicstyle=\style{\small}]
 # CHANGE SALARY
 old_salary = int(lines[3])
 new_salary = 1.10 * old_salary
 lines[3] = str(new_salary)
 \end{lstlisting}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\vspace{1.5cm}
+\begin{lstlisting}[basicstyle=\style{\small}]
 def change_salary(lines, x):
   old_salary = int(lines[3])
   new_salary = x * old_salary
   lines[3] = str(new_salary)
 \end{lstlisting}
-\end{column}
-\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\begin{lstlisting}[basicstyle=\style{\small}]
 # CHANGE ADDRESS
 lines[2] = 'Katowice, Polarna'
 \end{lstlisting}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\vspace{1.5cm}
+\begin{lstlisting}[basicstyle=\style{\small}]
 def change_address(lines, new_address):
   lines[2] = new_address
 \end{lstlisting}
-\end{column}
-\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\begin{lstlisting}[basicstyle=\style{\small}]
 # WRITE FILE
 f = open('123313.txt', 'w')
 f.write('\n'.join(lines))
 f.close()
 \end{lstlisting}
-\end{column}
-\begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\small,language=python]
+\vspace{1.5cm}
+\begin{lstlisting}[basicstyle=\style{\small}]
 def write_file(person, lines):
   f = open(person + '.txt', 'w')
   f.write('\n'.join(lines))
   f.close()
 \end{lstlisting}
-\end{column}
-\end{columns}
 \end{frame}
 
 \againframe{longcode}
@@ -408,7 +465,7 @@ def write_file(person, lines):
 \begin{frame}[fragile]
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\tiny,language=python]
+\begin{lstlisting}[basicstyle=\style{\tiny}]
 # READ FILE
 lines = read_file('123313')
 
@@ -431,7 +488,7 @@ write_file('123790', lines)
 \end{lstlisting}
 \end{column}
 \begin{column}{0.5\textwidth}
-\begin{lstlisting}[basicstyle=\tiny,language=python]
+\begin{lstlisting}[basicstyle=\style{\tiny}]
 
 # ---
 
@@ -449,7 +506,7 @@ write_file('123856', lines)
 \end{frame}
 
 \begin{frame}[fragile]
-\begin{lstlisting}[language=python]
+\begin{lstlisting}
 lines = read_file('123313')
 change_salary(lines, 1.11)
 write_file('123313', lines)
@@ -461,6 +518,152 @@ write_file('123790', lines)
 lines = read_file('123856')
 change_salary(lines, 1.10)
 write_file('123856', lines)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+Function call/return costs resources!
+\pause
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\style{\small}]
+def f(x):
+  return 2 * x + 3 * x + 1
+\end{lstlisting}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\style{\small}]
+def twice(x):
+  return 2 * x
+
+def thrice(x):
+  return 3 * x
+
+def g(x):
+  return twice(x) + thrice(x) + 1
+\end{lstlisting}
+
+\end{column}
+\end{columns}
+\pause
+\SI{0.18}{\us} vs \SI{0.32}{\us} ($1.8\times$)
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\style{\tiny}]
+def fib(i):
+  if i == 0 or i == 1:
+    return 1
+  else:
+    return fib(i-1) + fib(i-2)
+
+print(fib(40))
+\end{lstlisting}
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{lstlisting}[basicstyle=\style{\tiny},language=C]
+#include <stdio.h>
+
+int fib(int i) {
+  if (i == 0 || i == 1)
+    return 1;
+  else
+    return fib(i-1) + fib(i-2);
+}
+
+int main(void) {
+  printf("%u\n", fib(40));
+  return 0;
+}
+\end{lstlisting}
+\end{column}
+\end{columns}
+\pause
+\SI{37}{\s} vs \SI{0.1}{\s} ($370\times$)
+\end{frame}
+
+\section{Pure or impure}
+
+\begin{frame}
+\centering
+\Huge
+Pure vs ``dirty'' functions
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}
+def payEmployee(employeeId, hours):
+  connectionId = 12332
+
+  today = datetime.date.today()
+  weekday = today.isoweekday() # 1 for Monday, 7 for Sunday
+
+  if weekday == 7:
+    r = paySundayTime(connectionId, employeeId, hours)
+  else:
+    r = payNormalTime(connectionId, employeeId, hours)
+  return r
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}
+def payEmployee(employeeId, hours, today):
+  connectionId = 12332
+
+  weekday = today.isoweekday() # 1 for Monday, 7 for Sunday
+
+  if weekday == 7:
+    r = paySundayTime(connectionId, employeeId, hours)
+  else:
+    r = payNormalTime(connectionId, employeeId, hours)
+  return r
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}
+# def payEmployee(employeeId, hours, today)
+
+r1 = payEmployee(1434, 8, datetime.date(2022, 4, 1))
+r2 = payEmployee(1434, 8, datetime.date(2022, 4, 2))
+r3 = payEmployee(1434, 8, datetime.date(2022, 4, 3))
+r4 = payEmployee(1434, 8, datetime.date(2022, 4, 4))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Pure function}
+\begin{itemize}
+  \item DOES NOT modify arguments
+  \pause
+  \item DOES NOT depend on the outer world
+  \pause
+  \item DOES NOT modify the world
+\end{itemize}
+\end{frame}
+
+\section{Script as a function}
+
+\begin{frame}[fragile]
+\begin{lstlisting}
+import sys
+
+print("I was called with those arguments:")
+print(sys.argv)
+sys.exit(24)
+\end{lstlisting}
+\vspace{1.5cm}
+\begin{lstlisting}[language=sh]
+> python args.py 123 445 9080
+I was called with those arguments:
+['args.py', '123', '445', '9080']
+
+> echo $?
+24
 \end{lstlisting}
 \end{frame}
 

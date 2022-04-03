@@ -1,0 +1,9 @@
+name=Alice Green
+2189.0
+town=Warsaw
+street=Aleje Jerozolimskie
+age=25
+gross_salary=8900
+position=Principal Office Assistant
+line_manager=234567
+hired_year=2010
