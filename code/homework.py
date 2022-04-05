@@ -1,3 +1,9 @@
+# This program accepts one, two or three command-line arguments, converts them
+# into numbers (originally they are strings) and prints the result of some
+# mathematical operations using these arguments. If the command-line arguments
+# are invalid, an error exit code is returned by the whole program to the
+# operating system.
+
 import sys
 
 # the first element in 'sys.argv' (at index 0) is always the script file name;

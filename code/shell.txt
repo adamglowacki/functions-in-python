@@ -1,0 +1,6 @@
+> python args.py 123 445 9080
+I was called with those arguments:
+['args.py', '123', '445', '9080']
+
+> echo %errorlevel%
+24
