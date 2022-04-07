@@ -2,6 +2,7 @@
 \usepackage{polski}
 \usepackage{xltxtra}
 \usepackage{listings}
+\usepackage{multicol}
 \usepackage{xcolor}
 \usepackage{siunitx}
 \usepackage{graphicx}
@@ -117,7 +118,7 @@ Warsaw, Aleje Jerozolimskie
 \end{frame}
 
 \begin{frame}[fragile]
-  \lstinputlisting[basicstyle=\style{\tiny}]{code/long-seps.py}
+  \lstinputlisting[basicstyle=\style{\tiny},multicols=2]{code/long-seps.py}
 \end{frame}
 
 \begin{frame}[fragile,label=longcode]
@@ -169,7 +170,7 @@ Warsaw, Aleje Jerozolimskie
 \end{frame}
 
 \begin{frame}[fragile]
-  \lstinputlisting[basicstyle=\style{\LARGE}]{code/f3.py}
+  \lstinputlisting[basicstyle=\style{\LARGE}]{code/f4.py}
 \end{frame}
 
 \section{Use functions}
@@ -177,7 +178,7 @@ Warsaw, Aleje Jerozolimskie
 \begin{frame}[fragile]
   \lstinputlisting{code/read-section.py}
   \vspace{1.5cm}
-  \lstinputlisting{code/read-no-return.py}
+  \lstinputlisting{code/read-no-return-function.py}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -207,7 +208,7 @@ Warsaw, Aleje Jerozolimskie
 \againframe{longcode}
 
 \begin{frame}[fragile]
-  \lstinputlisting{code/functions-seps-comments.py}
+  \lstinputlisting[basicstyle=\style{\tiny}]{code/functions-seps-comments.py}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -250,7 +251,7 @@ Why would anybody need a program that doesn't interact with him?
 
 \begin{frame}[fragile]
   \frametitle{``Clean up'' the code using functions}
-  \lstinputlisting{code/homework.py}
+  \lstinputlisting[basicstyle=\style{\fontsize{2.5}{4}\selectfont}]{code/homework.py}
 \end{frame}
 
 \end{document}
