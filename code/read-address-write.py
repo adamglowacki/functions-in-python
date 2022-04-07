@@ -4,6 +4,6 @@ f.close()
 
 lines[2] = 'Katowice, Polarna'
 
-f = open('123313.txt', 'w')
+f = open('123790.txt', 'w')
 f.write('\n'.join(lines))
 f.close()

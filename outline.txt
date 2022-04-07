@@ -11,12 +11,6 @@
 * let's code! does anybody see a problem here?
 * no return - changing the argument; it's a bit tricky - what is passed by ref,
   what is passed by value
-* somebody warns about the overhead
-* let's check
-* wow, twice as long!
-* let's compare Python with C
-* why do you use Python?
-* because CPU is cheaper than you!
 
 * pure: input is in arguments, output is in result
 * dirty: everything else
