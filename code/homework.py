@@ -34,7 +34,7 @@ elif len(sys.argv) == 4:
     arg2 = int(sys.argv[2])
     if arg2 < 0:
         print("Sorry, expected non-negative integers")
-        sys.exit(1) # end with 1 to indicate error # end with 1 to indicate error
+        sys.exit(1) # end with 1 to indicate error
     arg3 = int(sys.argv[3])
     if arg3 < 0:
         print("Sorry, expected non-negative integers")

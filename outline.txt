@@ -11,6 +11,7 @@
 * let's code! does anybody see a problem here?
 * no return - changing the argument; it's a bit tricky - what is passed by ref,
   what is passed by value
+* simpler, no details to skip over, no duplication - easier to modify
 
 * pure: input is in arguments, output is in result
 * dirty: everything else
